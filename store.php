@@ -7,3 +7,4 @@ $result = $statement->execute([
     'content'=>$_POST['content']
 ]);
 
+header("Location: /");
