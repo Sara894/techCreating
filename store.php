@@ -1,4 +1,5 @@
 <?php
+//creating article
 $sql = "INSERT INTO tasks (title,content) VALUES (:title, :content)";
 $pdo = new PDO("mysql:host=localhost;dbname=tech;","root","");
 $statement = $pdo->prepare($sql);

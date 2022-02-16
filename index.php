@@ -16,8 +16,8 @@ $tasks = $statement->fetchAll(PDO::FETCH_OBJ);
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1>All tasks</h1>
-                    <a href="/create.php" class="btn btn-success">Add Task</a>
+                    <h1>All articles</h1>
+                    <a href="/create.php" class="btn btn-success">Add new article</a>
                     <table class="table">
                         <thead>
                             <tr>
@@ -27,14 +27,17 @@ $tasks = $statement->fetchAll(PDO::FETCH_OBJ);
                             </tr>
                         </thead>
                         <tbody>
+                            <?php foreach($tasks as $task):?>
                         <tr>
-                                <td>1</td>
-                                <td>Go to the store</td>
+                                <td><?=$task->id?></td>
+                                <td><?=$task->title?></td>
                                 <td>
-                                    <a href="" class="btn btn-warning">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="/show.php?id=<?=$task->id?>" class="btn btn-primary">Show</a>
+                                    <a href="/edit.php?id=<?=$task->id?>" class="btn btn-warning">Edit</a>
+                                    <a href="/delete.php?id=<?=$task->id?>" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
+                            <?endforeach;?>
                         </tbody>
                     </table>
 </div>

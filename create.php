@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>Create Task</h1>
+                <h1>Create Article</h1>
                 <form action="store.php" method="post">
                     <div class="form-group">
                         <input type="text" name="title" class="form-control">
