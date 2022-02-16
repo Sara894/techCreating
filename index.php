@@ -1,6 +1,4 @@
 <?php
-
-
 function getAllTasks()
 {
     //подключение к бд
@@ -12,6 +10,8 @@ function getAllTasks()
     $tasks = $statement->fetchAll(PDO::FETCH_OBJ);//получаем все записи из таблицы
     return $tasks;
 }
+
+getAllTasks();
 ?>
 
 <!docktype html>
