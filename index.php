@@ -11,7 +11,7 @@ function getAllTasks()
     return $tasks;
 }
 
-getAllTasks();
+$tasks = getAllTasks();
 ?>
 
 <!docktype html>
