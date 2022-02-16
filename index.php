@@ -1,17 +1,18 @@
 <?php
-function getAllTasks()
+function getAllarticles()
 {
     //подключение к бд
     $pdo = new PDO("mysql:host=localhost; dbname=tech;", "root", "");
     //запрос к бд
     $sql = "SELECT * FROM tasks";
-    $statement = $pdo->prepare($sql);//подготовили запрос к бд
-    $statement->execute();//отправка запроса к бд
-    $tasks = $statement->fetchAll(PDO::FETCH_OBJ);//получаем все записи из таблицы
+    $statement = $pdo->prepare($sql); //подготовили запрос к бд
+    $statement->execute(); //отправка запроса к бд
+    $tasks = $statement->fetchAll(PDO::FETCH_OBJ); //получаем все записи из таблицы
+
     return $tasks;
 }
 
-$tasks = getAllTasks();
+$tasks = getAllarticles();//переменная хранит массив объектов -- записей из таблиц
 ?>
 
 <!docktype html>
