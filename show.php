@@ -1,14 +1,7 @@
 <?php
-function getOneArticle(){
-    $pdo = new PDO("mysql:host=localhost;dbname=tech","root","");
-    $sql = "SELECT * FROM tasks WHERE id = :id";
-    $statement = $pdo->prepare($sql);
-    $statement->execute(['id'=>$_GET['id']]);
-    $task = $statement->fetchAll(PDO::FETCH_OBJ);
-    return $task;
-    //showing article
-}
-$task = getOneArticle();
+include 'database/QueryBuilder.php';
+$db = new QueryBuilder();
+$task = $db->getOneArticle();
 
 ?>
 <!DOCTYPE html>
