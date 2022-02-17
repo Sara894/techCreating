@@ -1,5 +1,5 @@
 <?php
-function getAllarticles()
+function getAll__Articles()
 {
     //подключение к бд
     $pdo = new PDO("mysql:host=localhost; dbname=tech;", "root", "");
@@ -11,8 +11,7 @@ function getAllarticles()
 
     return $tasks;
 }
-
-$tasks = getAllarticles();//переменная хранит массив объектов -- записей из таблиц
+$tasks = getAll__Articles();//переменная хранит массив объектов -- записей из таблиц
 ?>
 
 <!docktype html>
