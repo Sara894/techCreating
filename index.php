@@ -2,11 +2,9 @@
 require 'database\QueryBuilder.php';
 $db = new QueryBuilder();
 
-$tasks = $db->getAll__Articles(); //переменная хранит массив объектов -- записей из таблиц
+//$tasks = $db->getAll__Articles(); //переменная хранит массив объектов -- записей из таблиц
 
-
-
-
+$articles = $db->all("tasks");
 ?>
 
 <!docktype html>
@@ -32,14 +30,14 @@ $tasks = $db->getAll__Articles(); //переменная хранит масси
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($tasks as $task) : ?>
+                            <?php foreach ($articles as $article) : ?>
                                 <tr>
-                                    <td><?= $task->id ?></td>
-                                    <td><?= $task->title ?></td>
+                                    <td><?= $article->id ?></td>
+                                    <td><?= $article->title ?></td>
                                     <td>
-                                        <a href="/show.php?id=<?= $task->id ?>" class="btn btn-primary">Show</a>
-                                        <a href="/edit.php?id=<?= $task->id ?>" class="btn btn-warning">Edit</a>
-                                        <a href="/delete.php?id=<?= $task->id ?>" class="btn btn-danger">Delete</a>
+                                        <a href="/show.php?id=<?= $article->id ?>" class="btn btn-primary">Show</a>
+                                        <a href="/edit.php?id=<?= $article->id ?>" class="btn btn-warning">Edit</a>
+                                        <a href="/delete.php?id=<?= $article->id ?>" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             <? endforeach; ?>

@@ -18,6 +18,16 @@ class QueryBuilder
         return $tasks;
     }
 
+    function all($table)
+    {
+        $sql = "SELECT * FROM $table";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+        $articles = $statement->fetchAll(PDO::FETCH_OBJ);
+
+        return $articles;
+    }
+
     function addArticle($title, $content)
     {
         $sql = "INSERT INTO tasks (title,content) VALUES (:title, :content)";
