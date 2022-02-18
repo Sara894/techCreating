@@ -7,8 +7,7 @@ class QueryBuilder
         $this->pdo = new PDO("mysql:host=localhost; dbname=tech;", "root", "");
     }
 
-    function all($table)
-    {
+    function all($table){
         $sql = "SELECT * FROM $table";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
@@ -36,8 +35,7 @@ class QueryBuilder
         return $result;
     }
 
-    function update($table, $data, $id)
-    {
+    function update($table, $data, $id){
         $keys = array_keys($data);
         $placeholders = [];
         $i = 0;
@@ -55,14 +53,7 @@ class QueryBuilder
         $statement->execute($data);
     }
     
-    function deleteArticle($data){
-        $sql = "DELETE FROM tasks WHERE id=:id";
-        $statement = $this->pdo->prepare($sql);
-        $statement->execute($data);
-    }
-
-    function delete($table,$id)
-    {
+    function delete($table,$id){
         $sql = "DELETE FROM $table WHERE id=:id";
         $statement = $this->pdo->prepare($sql);
         $statement->execute(['id'=>$id]);
