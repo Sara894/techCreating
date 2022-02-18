@@ -27,16 +27,6 @@ class QueryBuilder
         ]);
     }
 
-    function getOneArticle()
-    {
-        $sql = "SELECT * FROM tasks WHERE id = :id";
-        $statement = $this->pdo->prepare($sql);
-        $statement->execute(['id' => $_GET['id']]);
-        $task = $statement->fetchAll(PDO::FETCH_OBJ);
-        return $task;
-        //showing article
-    }
-
     function getOne($table,$id){
         $sql = "SELECT * FROM $table WHERE id = :id";
         $statement = $this->pdo->prepare($sql);
@@ -52,10 +42,17 @@ class QueryBuilder
         $statement = $this->pdo->prepare($sql);
         $statement->execute($data);
     }
-
+    
     function deleteArticle($data){
         $sql = "DELETE FROM tasks WHERE id=:id";
         $statement = $this->pdo->prepare($sql);
         $statement->execute($data);
+    }
+
+    function delete($table,$id)
+    {
+        $sql = "DELETE FROM $table WHERE id=:id";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute(['id'=>$id]);
     }
 }
