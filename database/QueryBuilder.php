@@ -6,17 +6,6 @@ class QueryBuilder
     {
         $this->pdo = new PDO("mysql:host=localhost; dbname=tech;", "root", "");
     }
-    function getAll__Articles()
-    {
-        //подключение к бд
-        //запрос к бд
-        $sql = "SELECT * FROM tasks";
-        $statement = $this->pdo->prepare($sql); //подготовили запрос к бд
-        $statement->execute(); //отправка запроса к бд
-        $tasks = $statement->fetchAll(PDO::FETCH_OBJ); //получаем все записи из таблицы
-
-        return $tasks;
-    }
 
     function all($table)
     {
