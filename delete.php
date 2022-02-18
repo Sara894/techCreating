@@ -1,10 +1,7 @@
 <?
 //deleting article
 include 'database/QueryBuilder.php';
-$data = [
-    'id'=>$_GET['id']
-];
 $db = new QueryBuilder();
-$db->deleteArticle($data);
+$db->delete("tasks",$_GET['id']);
 header("Location: /");
 ?>
