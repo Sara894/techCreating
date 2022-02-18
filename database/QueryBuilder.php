@@ -17,14 +17,15 @@ class QueryBuilder
         return $articles;
     }
 
-    function addArticle($title, $content)
-    {
-        $sql = "INSERT INTO tasks (title,content) VALUES (:title, :content)";
+    function store($table,$data){
+        $keys = array_keys($data);
+        $stringOfKeys = implode(', ',$keys);
+        $stringOfValues = ':'.implode(', :',$keys);
+        $sql = "INSERT INTO $table ($stringOfKeys) VALUES ($stringOfValues)";
         $statement = $this->pdo->prepare($sql);
-        $result = $statement->execute([
-            'title' => $title,
-            'content' => $content
-        ]);
+        $result = $statement->execute($data);
+
+        return $result;
     }
 
     function getOne($table,$id){
