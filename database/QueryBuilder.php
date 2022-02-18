@@ -37,6 +37,14 @@ class QueryBuilder
         //showing article
     }
 
+    function getOne($table,$id){
+        $sql = "SELECT * FROM $table WHERE id = :id";
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute(['id'=>$id]);
+        $result = $statement->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
     function updateArticle($data)
     {
         //updating article

@@ -1,7 +1,9 @@
 <?php
 include 'database/QueryBuilder.php';
 $db = new QueryBuilder();
-$task = $db->getOneArticle();
+//$task = $db->getOneArticle();
+$article = $db->getOne("tasks", $_GET['id']);
+$article = $article[0];
 
 ?>
 <!DOCTYPE html>
@@ -15,9 +17,9 @@ $task = $db->getOneArticle();
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <h1><?=$task[0]->title?></h1>
+                <h1><?=$article->title?></h1>
                 <p>
-                    <?=$task[0]->content?>
+                    <?=$article->content?>
                 </p>
                 <a href="/">Go back</a>
             </div>
