@@ -6,5 +6,5 @@ $data = [
     'content' => $_POST['content']
 ];
 $db = new QueryBuilder();
-$db->updateArticle($data);
+$db->update("tasks",$data,$_GET['id']);
 header("Location: /"); die;

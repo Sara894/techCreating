@@ -36,10 +36,21 @@ class QueryBuilder
         return $result;
     }
 
-    function updateArticle($data)
+    function update($table, $data, $id)
     {
-        //updating article
-        $sql = "UPDATE tasks SET title=:title, content=:content WHERE id=:id";
+        $keys = array_keys($data);
+        $placeholders = [];
+        $i = 0;
+        foreach($keys as &$key ){
+            if($key !="id")
+              {
+                $placeholders[$i] = $key.'=:'.$key;
+                $i++;
+              }
+            
+        }
+        $placeholders = implode(', ',$placeholders);
+        $sql = "UPDATE $table SET $placeholders WHERE id=:$id";
         $statement = $this->pdo->prepare($sql);
         $statement->execute($data);
     }
